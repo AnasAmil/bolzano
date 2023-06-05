@@ -1,11 +1,11 @@
 import './App.css';
-import LoginForm from './components/LoginForm';
+import HeaderMenu from './components/HeaderMenu';
 
 function App() {
   return (
-    <div className="flex justify-center h-screen items-center">
-      <LoginForm />
-    </div>
+    <>
+      <HeaderMenu />
+    </>
   );
 }
 
