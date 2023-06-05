@@ -1,4 +1,10 @@
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-def api_home(request):
-    return JsonResponse({"message:": "Hi there, this is your Django API Response!!"})
+@api_view(["GET"])
+def api_home(request, *args, **kwargs):
+
+    return Response({"Welcome": "Welcome to Bolzano"})
+
+
+
