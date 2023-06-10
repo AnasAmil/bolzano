@@ -1,11 +1,22 @@
 import './App.css';
-import LoginForm from './components/LoginForm';
+import HeaderMenu from './components/HeaderMenu';
+import HistoryPage from './pages/HistoryPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage'
+import {BrowserRouter, Routes,Route } from "react-router-dom"
 
 function App() {
   return (
-    <div className="flex justify-center h-screen items-center">
-      <LoginForm />
-    </div>
+    <>
+      <HeaderMenu />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />}/>
+          <Route path='/history' element={<HistoryPage />}/>
+          <Route path='/about' element={<AboutPage />}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
