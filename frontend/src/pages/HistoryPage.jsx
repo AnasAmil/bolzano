@@ -1,10 +1,8 @@
 import React from 'react'
 import LoginForm from '../components/LoginForm'
-import useToken from '../app/useToken'
 
-const HistoryPage = () => {
+const HistoryPage = ({setToken, token}) => {
 
-  const {token, setToken} = useToken()
 
   if(!token) {
     return <LoginForm setToken={setToken} />
