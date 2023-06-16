@@ -60,13 +60,16 @@ import {
       },
     },
   }));
+
+  const LogoutUser = () => {
+    sessionStorage.removeItem('token')
+    window.location.reload(true)
+  }
   
   
-const HeaderMenu = () => {
+const HeaderMenu = ({token}) => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const { classes, theme } = useStyles();
-  
-    
   
     return (
       <Box pb={120}>
@@ -86,10 +89,18 @@ const HeaderMenu = () => {
               </a>
             </Group>
   
-            <Group className={classes.hiddenMobile}>
-              <Button variant="default" className={classes.authButtons} >Log in</Button>
-              <Button variant="default" className={classes.authButtons}>Sign up</Button>
-            </Group>
+            { token ? (
+              <Group className={classes.hiddenMobile}>
+                <Button variant="default" className={classes.authButtons} onClick={LogoutUser} >Log out</Button>
+              </Group>
+            ):(
+              <Group className={classes.hiddenMobile}>
+                <Button variant="default" className={classes.authButtons} >Log in</Button>
+                <Button variant="default" className={classes.authButtons}>Sign up</Button>
+              </Group>
+            )
+               
+            }
   
             <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} color='white' />
           </Group>
@@ -118,11 +129,20 @@ const HeaderMenu = () => {
             </a>
   
             <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
+
+            { token ? (
+              <Group position="center" grow pb="xl" px="md">
+                <Button variant="default" className={classes.authButtons}>Log out</Button>
+              </Group>
+            ):(
+              <Group position="center" grow pb="xl" px="md">
+                <Button variant="default" className={classes.authButtons}>Log in</Button>
+                <Button variant="default" className={classes.authButtons}>Sign up</Button>
+              </Group>
+            )
   
-            <Group position="center" grow pb="xl" px="md">
-              <Button variant="default" className={classes.authButtons}>Log in</Button>
-              <Button variant="default" className={classes.authButtons}>Sign up</Button>
-            </Group>
+            }
+  
           </ScrollArea>
         </Drawer>
       </Box>
