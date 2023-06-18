@@ -14,10 +14,10 @@ function App() {
       <HeaderMenu token={token} />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />}/>
+          <Route path='/' element={<HomePage token={token} />}/>
           <Route path='/history' element={<HistoryPage setToken={setToken} token={token} />}/>
           <Route path='/about' element={<AboutPage />}/>
-          <Route path='/reserve' element={<ReservePage />}/>
+          <Route path='/:resName/reserve' element={<ReservePage />}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -70,6 +70,7 @@ import {
 const HeaderMenu = ({token}) => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const { classes, theme } = useStyles();
+
   
     return (
       <Box pb={120}>
