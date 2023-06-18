@@ -1,50 +1,37 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Container, SimpleGrid } from'@mantine/core'
-
+import axios from 'axios'
 import RestaurantCard from './RestaurantCard';
 
 
 
-const mockData = [
-    {
-        name: "Rick's Café",
-        address: '248 Bd Sour Jdid',
-        phone: '05222-74207',
-        city: 'Casablanca',
-        image: 'https://static01.nyt.com/images/2018/07/02/world/00rickscafe-dispatch1/merlin_139818486_910435ea-c418-4418-8bfa-f28bb0a446ce-superJumbo.jpg',
-        rating: 4.2
-    },
-    {
-        name: 'La Sqala',
-        address: 'Bd des Almohades',
-        phone: '05222-60960',
-        city: 'Casablanca',
-        image: 'https://api.madein.city/img/places/7/14614/5d63a9472caa3993675902.jpg',
-        rating: 4.2
-    },
-    {
-        name: 'SKY28',
-        address: 'Bd Mohamed Zerktouni',
-        phone: '05229-78000',
-        city: 'Casablanca',
-        image: 'https://recettechirurgicale.org/wp-content/uploads/2019/05/WhatsApp-Image-2019-05-29-at-19.50.27-860x485.jpeg',
-        rating: 4.1
-    },
-    {
-        name: 'Nori Sushi',
-        address: "8 Rue d'Ifrane",
-        phone: '05223-95555',
-        city: 'Casablanca',
-        image: 'https://d2fdt3nym3n14p.cloudfront.net/venue/3238/gallery/10167/conversions/84787452_106505234267187_2240735398110167040_o-big.jpg',
-        rating: 4.1
-    }
-]
 
 
 
-const RestaurantsGrid = () => {
-    const cards = mockData.map((card) => (
-        <RestaurantCard key={card.name} card={card}/>
+const RestaurantsGrid = ({token}) => {
+
+    const [restaurants, setRestaurants] = useState([])
+
+    useEffect(() => {
+       const fetchRestaurants = async () => {
+            await axios.get('http://127.0.0.1:8000/api/restaurants/', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then(res => {
+                setRestaurants(res.data)
+            }).catch(err => {{
+                console.log(err)
+            }})
+       }
+
+       fetchRestaurants()
+    }, [])
+    
+      
+    const cards = restaurants.map((restaurant) => (
+        <RestaurantCard key={restaurant.id} restaurant={restaurant}/>
     ))
 
   return (

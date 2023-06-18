@@ -1,9 +1,9 @@
 import React from 'react'
 import RestaurantsGrid from '../components/RestaurantsGrid'
 
-const HomePage = () => {
+const HomePage = ( {token} ) => {
   return (
-    <RestaurantsGrid />
+    <RestaurantsGrid token={token} />
   )
 }
 

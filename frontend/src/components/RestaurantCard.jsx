@@ -3,6 +3,7 @@ import { Card,  Text, Image, Group, Button, rem, createStyles } from'@mantine/co
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import StarIcon from '@mui/icons-material/Star';
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
     card: {
@@ -59,34 +60,34 @@ const useStyles = createStyles((theme) => ({
     }
   }));
 
-const RestaurantCard = ({ card }) => {
+const RestaurantCard = ({ restaurant }) => {
     const { classes } = useStyles()
 
   return (
-    <Card key={card.name} withBorder className={classes.card}>
+    <Card  withBorder className={classes.card}>
             <Card.Section className={classes.imageSection}>
-                <Image src={card.image} height={150} />
+                <Image src={restaurant.image} height={150} />
             </Card.Section>
             <Card.Section className={classes.label}>
-                <Text>{card.name}</Text>
-                <Text className='text-[#66948C]'>{card.city}</Text>
+                <Text>{restaurant.name}</Text>
+                <Text className='text-[#66948C]'>{restaurant.city}</Text>
             </Card.Section>
             <Card.Section className={classes.info}>
                 <Group>
                     <LocationOnOutlinedIcon sx={{color: '#DEE2E6', width: '25px'}} />
-                    <Text>{card.address}</Text>
+                    <Text>{restaurant.address}</Text>
                 </Group>
                 <Group>
                     <LocalPhoneOutlinedIcon sx={{color: '#DEE2E6', width: '25px'}}/>
-                    <Text>{card.phone}</Text>
+                    <Text>{restaurant.phone}</Text>
                 </Group>
             </Card.Section>
             <Card.Section className={classes.footer}>
                 <Group sx={{ color: '#F9AF00', gap: '2px' }}>
                     <StarIcon />
-                    <Text>{card.rating}</Text>
+                    <Text>{restaurant.rating}</Text>
                 </Group>
-                <Button variant='filled' className={classes.button}>Reserve</Button>
+                <Link to={'/'+restaurant.name+'/reserve'}><Button variant='filled' className={classes.button}>Reserve</Button></Link>
             </Card.Section>
         </Card>
   )

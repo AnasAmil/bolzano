@@ -8,5 +8,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'address',
-            'phone'
+            'city',
+            'phone',
+            'rating',
+            'image'
         ]

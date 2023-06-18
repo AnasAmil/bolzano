@@ -1,8 +1,12 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const ReservePage = () => {
+
+  const params = useParams()
+
   return (
-    <div>ReservePage</div>
+    <div>{params.resName}</div>
   )
 }
 
