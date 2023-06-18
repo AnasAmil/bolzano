@@ -73,7 +73,7 @@ const HeaderMenu = ({token}) => {
 
   
     return (
-      <Box pb={120}>
+      <Box>
         <Header height={60} px="md" sx={{ backgroundColor: '#272627' }}>
           <Group position="apart" sx={{ height: '100%' }}>
             <Code>Logo</Code>

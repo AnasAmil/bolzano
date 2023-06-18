@@ -12,7 +12,7 @@ class RestaurantListCreateAPIView(generics.ListCreateAPIView):
             authentication.SessionAuthentication,
             TokenAuthentication
         ]
-    permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
+    # permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
 
     def perform_create(self, serializer):
         # serializer.save(user=self.request.user)

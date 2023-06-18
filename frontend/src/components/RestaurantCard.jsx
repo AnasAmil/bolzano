@@ -87,7 +87,7 @@ const RestaurantCard = ({ restaurant }) => {
                     <StarIcon />
                     <Text>{restaurant.rating}</Text>
                 </Group>
-                <Link to={'/'+restaurant.name+'/reserve'}><Button variant='filled' className={classes.button}>Reserve</Button></Link>
+                <Link to={'/'+restaurant.id+'/reserve'}><Button variant='filled' className={classes.button}>Reserve</Button></Link>
             </Card.Section>
         </Card>
   )
