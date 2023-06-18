@@ -5,7 +5,7 @@ const RestaurantBanner = ({image, name}) => {
   return (
     <div className='relative'>
         <Image src={image} height='35vh'/>
-        <h1 className='absolute top-[40%] right-[45%] text-white font-bold text-6xl'>{name}</h1>
+        <h1 className='absolute top-[40%] right-[40%] text-white font-bold text-6xl'>{name}</h1>
       </div>
   )
 }
