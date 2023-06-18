@@ -14,16 +14,12 @@ const RestaurantsGrid = ({token}) => {
 
     useEffect(() => {
        const fetchRestaurants = async () => {
-            await axios.get('http://127.0.0.1:8000/api/restaurants/', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            .then(res => {
+            await axios.get('http://127.0.0.1:8000/api/restaurants/')
+            .then((res) => {
                 setRestaurants(res.data)
-            }).catch(err => {{
+            }).catch((err) => {
                 console.log(err)
-            }})
+            })
        }
 
        fetchRestaurants()
@@ -35,7 +31,7 @@ const RestaurantsGrid = ({token}) => {
     ))
 
   return (
-    <Container my='md' maw={1200}>
+    <Container my='md' maw={1200} py='20vh'>
         <SimpleGrid 
             cols={4}
             breakpoints={[

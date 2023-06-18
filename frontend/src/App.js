@@ -17,7 +17,7 @@ function App() {
           <Route path='/' element={<HomePage token={token} />}/>
           <Route path='/history' element={<HistoryPage setToken={setToken} token={token} />}/>
           <Route path='/about' element={<AboutPage />}/>
-          <Route path='/:resName/reserve' element={<ReservePage />}/>
+          <Route path='/:resId/reserve' element={<ReservePage token={token} setToken={setToken} />}/>
         </Routes>
       </BrowserRouter>
     </>
