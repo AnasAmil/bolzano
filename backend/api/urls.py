@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('auth/', obtain_auth_token),
     path('', views.api_home),
-    path('restaurants/', include('restaurants.urls'))
+    path('restaurants/', include('restaurants.urls')),
+    path('reservations/', include('reservations.urls'))
 ]
