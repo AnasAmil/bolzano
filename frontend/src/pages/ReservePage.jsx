@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LoginForm from '../components/LoginForm'
 import RestaurantBanner from '../components/RestaurantBanner'
+import ReserveForm from '../components/ReserveForm'
 
 const ReservePage = ({token, setToken}) => {
 
@@ -34,6 +35,7 @@ const ReservePage = ({token, setToken}) => {
   return (
     <>
       <RestaurantBanner image={restaurant.image} name={restaurant.name}/>
+      <ReserveForm token={token} restaurant={restaurant}/>
     </>
   )
 }
