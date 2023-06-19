@@ -41,7 +41,7 @@ class RestaurantDeleteAPIView(generics.DestroyAPIView):
     lookup_field= 'pk'
 
 
-restaurant_delete_view = RestaurantDeleteAPIView.as_view()  
+restaurant_delete_view = RestaurantDeleteAPIView.as_view()
 
 # class RestaurantMixinView(
 #             mixins.ListModelMixin,
