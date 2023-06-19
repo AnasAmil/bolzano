@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'api.apps.ApiConfig',
     'restaurants.apps.RestaurantsConfig',
-    'reservations.apps.ReservationsConfig'
+    'reservations.apps.ReservationsConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [

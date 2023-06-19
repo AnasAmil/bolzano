@@ -25,12 +25,19 @@ const LoginForm = ({ setToken }) => {
                   }).catch(e => {
                     console.log(e)
                   })
+
+      await axios.get(`http://127.0.0.1:8000/api/accounts/${credentials.username}`)
+        .then((res) => {
+          localStorage.setItem('user', JSON.stringify(res.data))
+        }).catch((err) => {
+          console.log(err)
+        })
     }
 
   return (
     <form className='flex flex-col w-1/4 gap-5 m-auto' onSubmit={handleLoginUser}>
         <TextField 
-          label="Email" 
+          label="Username" 
           variant="outlined"
           value={credentials.username}
           onChange={(e) => setCredentials({...credentials, username: e.target.value})}

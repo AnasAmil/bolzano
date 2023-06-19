@@ -63,6 +63,7 @@ import {
 
   const LogoutUser = () => {
     sessionStorage.removeItem('token')
+    localStorage.removeItem('user')
     window.location.reload(true)
   }
   
@@ -96,8 +97,8 @@ const HeaderMenu = ({token}) => {
               </Group>
             ):(
               <Group className={classes.hiddenMobile}>
-                <Button variant="default" className={classes.authButtons} >Log in</Button>
-                <Button variant="default" className={classes.authButtons}>Sign up</Button>
+                <Button variant="default" className={classes.authButtons} component='a' href="/login" >Log in</Button>
+                <Button variant="default" className={classes.authButtons} >Sign up</Button>
               </Group>
             )
                
