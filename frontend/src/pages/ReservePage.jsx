@@ -29,7 +29,11 @@ const ReservePage = ({token, setToken}) => {
 
   
   if(!token) {
-    return <LoginForm setToken={setToken}/>
+    return (
+      <div className='py-[30vh]'>
+        <LoginForm  setToken={setToken} />
+      </div>
+    )
   }
 
   return (
