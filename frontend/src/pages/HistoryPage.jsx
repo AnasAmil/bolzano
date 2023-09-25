@@ -19,11 +19,12 @@ const HistoryPage = ({setToken, token}) => {
     }
 
     fetchReservations()
- }, [])
+ }, [token])
 
-  const cards = reservations.map((reservation) => (
-      <ReserveCard reservation={reservation} /> 
+  const cards = reservations.filter(reservation => JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).username === reservation.customer_name : '').map(filtredReservation => (
+    <ReserveCard key={filtredReservation.id} reservation={filtredReservation} token={token} /> 
   ))
+
 
   if(!token) {
     return (

@@ -5,6 +5,7 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import { Button } from '@mui/material';
+import axios from 'axios';
 
 
 const useStyles = createStyles((theme) => ({
@@ -57,27 +58,38 @@ const useStyles = createStyles((theme) => ({
     }
   }));
 
-const ReserveCard = ({reservation}) => {
+const ReserveCard = ({reservation, token}) => {
 
     const {classes} = useStyles()
+
+    const deleteReservation = async () => {
+      await axios.delete(`http://127.0.0.1:8000/api/reservations/${reservation.id}/delete/`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then((res) => {
+          window.location.reload(true )
+        })
+    }
 
   return (
         <Card  withBorder className={classes.card} p={30}>
             <Card.Section>
-              <Image src={reservation.restaurant.image} height={90}/>
+              <Image src={reservation.restaurant_info.image} height={90}/>
             </Card.Section>
             <Card.Section>
-              <Text className='font-bold text-lg'>{reservation.restaurant.name}</Text>
-              <Text className='font-semibold text-base text-[#29948C]'>{reservation.restaurant.city}</Text>
+              <Text className='font-bold text-lg'>{reservation.restaurant_info.name}</Text>
+              <Text className='font-semibold text-base text-[#29948C]'>{reservation.restaurant_info.city}</Text>
             </Card.Section>
             <Card.Section className={classes.info}>
                 <Group>
                     <LocationOnOutlinedIcon sx={{color: '#DEE2E6', width: '25px'}} />
-                    <Text>{reservation.restaurant.address}</Text>
+                    <Text>{reservation.restaurant_info.address}</Text>
                 </Group>
                 <Group>
                     <LocalPhoneOutlinedIcon sx={{color: '#DEE2E6', width: '25px'}}/>
-                    <Text>{reservation.restaurant.phone}</Text>
+                    <Text>{reservation.restaurant_info.phone}</Text>
                 </Group>
             </Card.Section>
             <Card.Section>
@@ -102,7 +114,7 @@ const ReserveCard = ({reservation}) => {
             </Card.Section>
 
             <Card.Section>
-              <Button variant='outlined' color='error' className=''>Delete</Button>
+              <Button variant='outlined' color='error' onClick={deleteReservation}>Delete</Button>
             </Card.Section>
         </Card>
   )

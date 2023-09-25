@@ -6,18 +6,19 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
-const ReserveForm = ({token, restaurant}) => {
+const ReserveForm = ({token, restaurantId}) => {
 
   const [reservation, setReservation] = useState({
-    restaurant: restaurant.id,
+    restaurant: restaurantId,
     customer_name: '',
     table: '',
     guests: 0,
   })
 
-  const [date, setDate] = useState()
-  const [time, setTime] = useState()
+  const [date, setDate] = useState(dayjs('2022-04-17'))
+  const [time, setTime] = useState(dayjs('2022-04-17T15:30'))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -35,7 +36,9 @@ const ReserveForm = ({token, restaurant}) => {
       }).catch((err) => {
         console.log(err);
       })
+
   }
+
 
   return (
     <form className='w-1/3 mx-auto mt-9' onSubmit={handleSubmit}>
