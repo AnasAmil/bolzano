@@ -26,3 +26,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
         tables_query = Table.objects.filter(restaurant_id=obj.id)
         serializer = TableSerializer(tables_query, many=True)
         return serializer.data
+    
+class RestaurantPrimaryKeySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = ['id']

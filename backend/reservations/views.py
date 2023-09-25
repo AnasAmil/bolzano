@@ -13,3 +13,12 @@ class ReservationListCreateAPIView(generics.ListCreateAPIView):
         ]
 
 reservation_list_create_view = ReservationListCreateAPIView.as_view()
+
+
+class ReservationDeleteAPIView(generics.DestroyAPIView):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+    lookup_field= 'pk'
+
+
+reservation_delete_view = ReservationDeleteAPIView.as_view()

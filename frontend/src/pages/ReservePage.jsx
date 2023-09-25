@@ -39,7 +39,7 @@ const ReservePage = ({token, setToken}) => {
   return (
     <>
       <RestaurantBanner image={restaurant.image} name={restaurant.name}/>
-      <ReserveForm token={token} restaurant={restaurant}/>
+      <ReserveForm token={token} restaurantId={params.resId}/>
     </>
   )
 }
