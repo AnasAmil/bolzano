@@ -72,7 +72,6 @@ const HeaderMenu = ({token}) => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const { classes, theme } = useStyles();
 
-  
     return (
       <Box>
         <Header height={60} px="md" sx={{ backgroundColor: '#272627' }}>
@@ -98,7 +97,7 @@ const HeaderMenu = ({token}) => {
             ):(
               <Group className={classes.hiddenMobile}>
                 <Button variant="default" className={classes.authButtons} component='a' href="/login" >Log in</Button>
-                <Button variant="default" className={classes.authButtons} >Sign up</Button>
+                <Button variant="default" className={classes.authButtons} component='a' href="/register" >Sign up</Button>
               </Group>
             )
                

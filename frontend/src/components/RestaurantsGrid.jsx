@@ -3,11 +3,6 @@ import { Container, SimpleGrid } from'@mantine/core'
 import axios from 'axios'
 import RestaurantCard from './RestaurantCard';
 
-
-
-
-
-
 const RestaurantsGrid = ({token}) => {
 
     const [restaurants, setRestaurants] = useState([])
